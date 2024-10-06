@@ -1,0 +1,10 @@
+INT a[1]
+
+function check
+    INT b[1]
+    b[0] <= 2
+    b[0] + 1
+end
+
+a[0] <= {do check} + 1
+a[0]

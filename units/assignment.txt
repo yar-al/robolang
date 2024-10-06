@@ -1,0 +1,10 @@
+#Assign value
+INT a[1,2,3]
+INT one[1,1]
+one[0,0] <= 1
+one[0,0]
+a[0,one[0,0]-1,0] <= 200
+a[0,0,0]
+a <= one
+a[0,0]
+1 in a

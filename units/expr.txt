@@ -1,0 +1,7 @@
+#Various expressions
+1 + 2
+1 - 9
+!1
+1 & 0
+true | false
+2 / 2 + 2 * 2

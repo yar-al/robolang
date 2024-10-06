@@ -1,0 +1,101 @@
+INT a[1,2,3] ; BOOL b[1,2,3]
+
+INT zero[1]
+zero[0] <= 0
+
+a[0,zero[0]+1,0] <= 252
+a[0,1,1] <= 876
+a[0,1,2] <= 142
+
+a[0,1,0] <= 1
+a[0,1,1] <= 10
+
+
+
+a[0,1,0]
+
+function check
+INT c[1]
+c[0] <= 2 + 5
+a[0,1,0] <= a[0,1,0] + 2
+a[0,1,1] <= 2
+a[0,1,2] <= 3 + c[0] + a[0,1,0]
+end
+
+function prikol
+INT c[1]
+c[0] <= 2
+dc[0] <= c[0]
+end
+
+function doublecheck
+INT dc[2]
+dc[0] <= 0
+do prikol
+from dc[0] to 3 with step 1 do check
+end
+
+a[0,1,0]
+a[0,1,1]
+
+111111
+
+a[0,1,0]
+a[0,1,1]
+a[0,1,2]
+
+111111
+
+do check
+a[0,1,0]
+a[0,1,1]
+a[0,1,2]
+
+111111
+
+do check
+a[0,1,0]
+a[0,1,1]
+a[0,1,2]
+
+111111
+
+if 2 less 1 do check
+a[0,1,0]
+a[0,1,1]
+a[0,1,2]
+
+111111
+
+if 1 less 2 do check
+a[0,1,0]
+a[0,1,1]
+a[0,1,2]
+
+111111
+
+a[0,1,0] <= 0
+
+from a[0,1,0] to 2 with step 1 do check
+
+a[0,1,0]
+a[0,1,1]
+a[0,1,2]
+
+111111
+
+do doublecheck
+
+a[0,1,0]
+a[0,1,1]
+a[0,1,2]
+
+111111
+
+do doublecheck
+
+a[0,1,0]
+a[0,1,1]
+a[0,1,2]
+
+111111

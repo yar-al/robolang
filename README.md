@@ -1,0 +1,2 @@
+# Robolang - python-like language for "robot in maze" algorithms
+An interpreter for custom language that contains some of the basic programming features and commands for controlling robot in 2D rectangular mazes. Created using **Flex** and **Bison**.

@@ -1,0 +1,5 @@
+#Init all types of variables
+INT a[1,2,3]
+BOOL b[1,2,3]
+CELL abs[1,2,30]
+INT a[1,2,10]

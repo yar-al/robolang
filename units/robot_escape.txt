@@ -1,0 +1,127 @@
+INT mapsize[1]; mapsize[0] <= 100
+INT map[mapsize[0],mapsize[0]]
+INT x[1]; INT y[1]
+
+function startmapfillx
+    map[x[0], y[0]] <= 0
+    x[0] += 1
+end
+
+function startmapfilly
+    x[0] <= 0
+    from 0 to mapsize[0]-1-x[0] with step 0 do startmapfillx
+    x[0] <= 0
+    y[0] += 1
+end
+
+y[0] <= 0
+from 0 to mapsize[0]-1-y[0] with step 0 do startmapfilly
+x[0] <= mapsize[0] / 2
+y[0] <= mapsize[0] / 2
+
+map[x[0], y[0]] <= 1
+
+function _gol
+    gone[0] <= true
+    x[0] -= 1
+    map[x[0], y[0]] += 1
+end
+function _gor
+    gone[0] <= true
+    x[0] += 1
+    map[x[0], y[0]] += 1
+end
+function _gou
+    gone[0] <= true
+    y[0] += 1
+    map[x[0], y[0]] += 1
+end
+function _god
+    gone[0] <= true
+    y[0] -= 1
+    map[x[0], y[0]] += 1
+end
+
+function _ngol
+    map[x[0]-1, y[0]] <= 10000000
+end
+function _ngor
+    map[x[0]+1, y[0]] <= 10000000
+end
+function _ngou
+    map[x[0], y[0]+1] <= 10000000
+end
+function _ngod
+    map[x[0], y[0]-1] <= 10000000
+end
+
+function gol
+    BOOL moved[1]
+    pick left
+    moved[0] <= go left
+    drop right
+    if moved[0] do _gol
+    if !moved[0] do _ngol
+end
+function gor
+    BOOL moved[1]
+    pick right
+    moved[0] <= go right
+    drop left
+    if moved[0] do _gor
+    if !moved[0] do _ngor
+end
+function gou
+    BOOL moved[1]
+    pick up
+    moved[0] <= go up
+    drop down
+    if moved[0] do _gou
+    if !moved[0] do _ngou
+end
+function god
+    BOOL moved[1]
+    pick down
+    moved[0] <= go down
+    drop up
+    if moved[0] do _god
+    if !moved[0] do _ngod
+end
+
+function override_min
+    min[0] <= dirweight[0]
+end
+
+function chooseandgo
+    INT dirweight[1]
+    INT min[1]
+    min[0] <= 10000000
+    dirweight[0] <= map[x[0]-1, y[0]]
+    if dirweight[0] less min[0] do override_min
+    dirweight[0] <= map[x[0]+1, y[0]]
+    if dirweight[0] less min[0] do override_min
+    dirweight[0] <= map[x[0], y[0]-1]
+    if dirweight[0] less min[0] do override_min
+    dirweight[0] <= map[x[0], y[0]+1]
+    if dirweight[0] less min[0] do override_min
+    
+    BOOL gone[1]
+    BOOL mindir[1]
+    gone[0] <= false
+    dirweight[0] <= map[x[0]-1, y[0]]
+    mindir[0] <= dirweight[0] = min[0]
+    if mindir[0] & !gone[0] do gol
+    dirweight[0] <= map[x[0]+1, y[0]]
+    mindir[0] <= dirweight[0] = min[0]
+    if mindir[0] & !gone[0] do gor
+    dirweight[0] <= map[x[0], y[0]-1]
+    mindir[0] <= dirweight[0] = min[0]
+    if mindir[0] & !gone[0] do god
+    dirweight[0] <= map[x[0], y[0]+1]
+    mindir[0] <= dirweight[0] = min[0]
+    if mindir[0] & !gone[0] do gou
+end
+
+.print
+from false to false with step escape do chooseandgo
+.print

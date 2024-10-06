@@ -1,0 +1,35 @@
+function push
+stack[top[0]] <= val[0] 
+top[0] += 1
+end
+
+function pop
+val[0] <= stack[top[0]-1]
+top[0] -= 1
+end
+
+function spush
+if top[0] less size[0] do push 
+end
+
+function spop
+if 0 less top[0] do pop 
+end
+
+INT size[1]; INT top[1]; INT val[1]
+
+size[0] <= 10
+INT stack[size[0]]
+
+val[0] <= 1
+do spush
+val[0] <= 2
+do spush
+val[0] <= 3
+do spush
+val[0] <= 0
+
+do spop
+val[0]
+do spop
+val[0]

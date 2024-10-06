@@ -1,0 +1,32 @@
+INT a[3]
+BOOL b[1]
+
+function check
+a[2] <= 5
+end
+
+a[0] <= 0
+a[1] <= 1
+a[2] <= 1
+
+from a[0] to a[2] with step a[1] do check
+
+#while loop implementation
+
+function changebool
+    b[0] <= true
+end
+
+b[0] <= false
+
+a[0]
+function whilebody
+    a[0] += 1
+end
+function cyclestep
+    do whilebody
+    if 5 = a[0] do changebool
+end
+
+from false to false with step b[0] do cyclestep
+a[0]
